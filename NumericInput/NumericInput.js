@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TextInput, StyleSheet, TouchableHighlight } from 'react-native'
-import Icon from 'react-native-vector-icons/Octicons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import Button from '../Button'
 import PropTypes from 'prop-types'
 import { create, PREDEF_RES } from 'react-native-pixel-perfect'
@@ -224,12 +224,12 @@ export default class NumericInput extends Component {
                     <View style={upDownStyle}>
                         <TouchableHighlight onPress={this.inc} underlayColor="white" style={[style.button, buttonStyles, { flex: 1, width: totalWidth - inputWidth -10, alignItems: 'center' }]}>
                             <View>
-                                <Icon name='triangle-up' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
+                                <Icon name='arrow-drop-up' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
                             </View>
                         </TouchableHighlight>
                         <TouchableHighlight onPress={this.dec} underlayColor="white" style={[style.button, buttonStyles, { flex: 1, width: totalWidth - inputWidth -10, alignItems: 'center' }]}>
                             <View>
-                                <Icon name='triangle-down' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
+                                <Icon name='arrow-drop-down' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
                             </View>
                         </TouchableHighlight>
                     </View>
