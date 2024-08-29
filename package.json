@@ -21,16 +21,16 @@
     "numeric"
   ],
   "author": {
-    "name": "omri himelbrand",
-    "email": "himelbrand@gmail.com"
+    "name": "hunglmtb",
+    "email": "hunglmtb@gmail.com"
   },
-  "homepage": "https://github.com/himelbrand/react-native-numeric-input",
+  "homepage": "https://github.com/hunglmtb/react-native-numeric-input",
   "bugs": {
-    "url": "https://github.com/himelbrand/react-native-numeric-input/issues"
+    "url": "https://github.com/hunglmtb/react-native-numeric-input/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/himelbrand/react-native-numeric-input.git"
+    "url": "git://github.com/hunglmtbg/react-native-numeric-input.git"
   },
   "license": "MIT",
   "dependencies": {
