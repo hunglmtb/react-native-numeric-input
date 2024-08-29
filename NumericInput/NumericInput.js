@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, TextInput, StyleSheet, Text } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
+import { View, TextInput, StyleSheet, TouchableHighlight } from 'react-native'
+import Icon from 'react-native-vector-icons/Octicons'
 import Button from '../Button'
 import PropTypes from 'prop-types'
 import { create, PREDEF_RES } from 'react-native-pixel-perfect'
@@ -175,6 +175,8 @@ export default class NumericInput extends Component {
             [style.inputUpDown, { width: inputWidth, height: totalHeight, fontSize: fontSize, color: textColor, borderRightWidth: 2, borderRightColor: borderColor }, this.props.inputStyle] :
             [style.inputPlusMinus, { width: inputWidth, height: totalHeight, fontSize: fontSize, color: textColor, borderRightWidth: sepratorWidth, borderLeftWidth: sepratorWidth, borderLeftColor: borderColor, borderRightColor: borderColor }, this.props.inputStyle]
         const upDownStyle = [{ alignItems: 'center', width: totalWidth - inputWidth, backgroundColor: this.props.upDownButtonsBackgroundColor, borderRightWidth: 1, borderRightColor: borderColor }, this.props.rounded ? { borderTopRightRadius: borderRadiusTotal, borderBottomRightRadius: borderRadiusTotal } : {}]
+        const buttonStyles = this.props.buttonStyles
+
         const rightButtonStyle = [
             {
                 position: 'absolute',
@@ -218,14 +220,18 @@ export default class NumericInput extends Component {
         if (this.props.type === 'up-down')
             return (
                 <View style={inputContainerStyle}>
-                    <TextInput {...this.props.extraTextInputProps} editable={editable} returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' value={this.state.stringValue} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
+                    <TextInput {...this.props.extraTextInputProps} editable={editable} returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numbers-and-punctuation' value={this.state.stringValue} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
                     <View style={upDownStyle}>
-                        <Button onPress={this.inc} style={{ flex: 1, width: '100%', alignItems: 'center' }}>
-                            <Icon name='ios-arrow-up' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
-                        </Button>
-                        <Button onPress={this.dec} style={{ flex: 1, width: '100%', alignItems: 'center' }}>
-                            <Icon name='ios-arrow-down' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
-                        </Button>
+                        <TouchableHighlight onPress={this.inc} underlayColor="white" style={[style.button, buttonStyles, { flex: 1, width: totalWidth - inputWidth -10, alignItems: 'center' }]}>
+                            <View>
+                                <Icon name='triangle-up' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={this.dec} underlayColor="white" style={[style.button, buttonStyles, { flex: 1, width: totalWidth - inputWidth -10, alignItems: 'center' }]}>
+                            <View>
+                                <Icon name='triangle-down' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
+                            </View>
+                        </TouchableHighlight>
                     </View>
                 </View>)
         else return (
@@ -274,13 +280,19 @@ const style = StyleSheet.create({
         padding: 0
     },
     icon: {
+        color: '#21aaf3',
         fontWeight: '900',
         backgroundColor: 'rgba(0,0,0,0)'
     },
     upDown: {
         alignItems: 'center',
         paddingRight: calcSize(15)
-    }
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#eeebe6',
+        margin: 1
+    },
 })
 NumericInput.propTypes = {
     iconSize: PropTypes.number,
@@ -310,7 +322,8 @@ NumericInput.propTypes = {
     reachMaxDecIconStyle: PropTypes.any,
     reachMinIncIconStyle: PropTypes.any,
     reachMinDecIconStyle: PropTypes.any,
-    extraTextInputProps: PropTypes.any
+    extraTextInputProps: PropTypes.any,
+    buttonStyles: PropTypes.any
 }
 NumericInput.defaultProps = {
     iconSize: calcSize(30),
@@ -339,6 +352,7 @@ NumericInput.defaultProps = {
     reachMinIncIconStyle: {},
     reachMinDecIconStyle: {},
     onLimitReached: (isMax, msg) => { },
-    extraTextInputProps: {}
+    extraTextInputProps: {},
+    buttonStyles: {}
 
 }

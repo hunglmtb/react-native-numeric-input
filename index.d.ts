@@ -1,3 +1,5 @@
+import {StyleProp, TextStyle} from "react-native";
+
 declare module 'react-native-numeric-input' {
   import { ViewStyle } from 'react-native'
   import { Color } from 'csstype'
@@ -11,14 +13,14 @@ declare module 'react-native-numeric-input' {
     initValue?: number
     iconSize?: number
     borderColor?: Color
-    iconStyle?: ViewStyle
+    iconStyle?: StyleProp<TextStyle>
     totalWidth?: number
     separatorWidth?: number
     type?: 'plus-minus' | 'up-down'
     rounded?: boolean
     textColor?: Color
     containerStyle?: ViewStyle
-    inputStyle?: ViewStyle
+    inputStyle?: StyleProp<TextStyle>
     upDownButtonsBackgroundColor?: Color
     rightButtonBackgroundColor?: Color
     leftButtonBackgroundColor?: Color
@@ -32,6 +34,7 @@ declare module 'react-native-numeric-input' {
     reachMinIncIconStyle?: ViewStyle
     reachMinDecIconStyle?: ViewStyle
     extraTextInputProps?: object
+    buttonStyles?: StyleProp<ViewStyle>
   }
 
   export default class NumericInput extends React.Component<

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Platform,
     TouchableOpacity,
     TouchableNativeFeedback,
-    View,
-    Text
+    View
 } from 'react-native';
 
 function _handlePress(callback){
